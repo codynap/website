@@ -1,0 +1,329 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cody Napior</title>
+<meta name="description" content="Cody Napior — builder of revenue systems, rider of long trains, finisher of long races. Ottawa, Canada.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🌍</text></svg>">
+<style>
+  :root {
+    --bg: #fdfdfc;
+    --ink: #1a1a18;
+    --ink-soft: #55554f;
+    --ink-faint: #8a8a82;
+    --rule: #e8e8e2;
+    --accent: #1d7a4f;
+    --max: 39rem;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #141412;
+      --ink: #ebebe6;
+      --ink-soft: #a9a9a1;
+      --ink-faint: #78786f;
+      --rule: #2b2b27;
+      --accent: #5fbf8f;
+    }
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { font-size: 17px; }
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", sans-serif;
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+    padding: clamp(3rem, 9vh, 6rem) 1.5rem 5rem;
+  }
+  main { max-width: var(--max); margin: 0 auto; }
+
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { text-decoration: underline; text-underline-offset: 3px; }
+
+  h1 { font-size: 1.5rem; font-weight: 650; letter-spacing: -0.01em; }
+  .tagline { color: var(--ink-soft); margin-top: 0.2rem; }
+
+  section { margin-top: 3.75rem; }
+  h2 {
+    font-size: 0.78rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--ink-faint);
+    margin-bottom: 1.1rem;
+  }
+  p + p { margin-top: 1rem; }
+  .soft { color: var(--ink-soft); }
+
+  .intro { margin-top: 2.5rem; }
+
+  /* Globe */
+  .globe-wrap {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 0.5rem;
+  }
+  #globe {
+    width: min(100%, 26rem);
+    aspect-ratio: 1;
+    cursor: grab;
+    touch-action: pan-y;
+  }
+  #globe:active { cursor: grabbing; }
+  #globe-tip {
+    position: absolute;
+    pointer-events: none;
+    background: var(--ink);
+    color: var(--bg);
+    font-size: 0.8rem;
+    line-height: 1.4;
+    padding: 0.2rem 0.6rem;
+    border-radius: 6px;
+    white-space: nowrap;
+    transform: translate(-50%, -150%);
+    opacity: 0;
+    transition: opacity 0.15s;
+  }
+  .globe-caption {
+    color: var(--ink-soft);
+    font-size: 0.92rem;
+    text-align: center;
+    margin-top: 0.75rem;
+    max-width: 30rem;
+  }
+
+  ul.things { list-style: none; }
+  ul.things li {
+    padding: 1.1rem 0;
+    border-top: 1px solid var(--rule);
+    color: var(--ink);
+  }
+  ul.things li:last-child { border-bottom: 1px solid var(--rule); }
+  ul.things li .aside { color: var(--ink-faint); font-size: 0.9rem; }
+
+  .links { display: flex; gap: 1.5rem; flex-wrap: wrap; margin-top: 0.9rem; }
+
+  footer { margin-top: 4.5rem; color: var(--ink-faint); font-size: 0.82rem; }
+</style>
+</head>
+<body>
+<main>
+  <header>
+    <h1>Cody Napior</h1>
+    <p class="tagline">Ottawa, Canada</p>
+  </header>
+
+  <div class="intro">
+    <p>Hi, I'm Cody. By day I design the systems behind software companies' revenue: the scoring, routing, and plumbing that decide whether a sales team runs on rails or runs on spreadsheets. I came up through sales itself, so I build systems for people I've actually been.</p>
+    <p class="soft">The rest of the time I'm usually training for something, planning a trip, or losing chess rating points I worked very hard to earn.</p>
+  </div>
+
+  <section>
+    <h2>Places</h2>
+    <div class="globe-wrap">
+      <canvas id="globe"></canvas>
+      <div id="globe-tip"></div>
+      <p class="globe-caption">24 countries across 5 continents — 25 if you count the Faroe Islands (which I do). Favourite stretch so far: the Trans-Siberian Railway, Moscow&nbsp;→&nbsp;Irkutsk&nbsp;→&nbsp;Ulaanbaatar&nbsp;→&nbsp;Beijing. The bucket-list pins still outnumber these.</p>
+    </div>
+  </section>
+
+  <section>
+    <h2>Things I've Done</h2>
+    <ul class="things">
+      <li>Rode the Trans-Siberian Railway from Moscow to Beijing — six time zones, one very long train, and the Mongolian steppe rolling past the window.</li>
+      <li>Ran Ironman Ottawa in 2025. <span class="aside">Triathletes are contractually obligated to mention this.</span></li>
+      <li>Built and shipped an iOS app entirely on my own — user research, design, code, App Store launch. <span class="aside">Then made the harder call: not to scale it.</span></li>
+      <li>Currently rated <span id="chess-now">2016</span> rapid on chess.com. <span class="aside">A number I care about more than I probably should.</span></li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Work, Briefly</h2>
+    <p>The professional version: I'm a GTM systems and revenue operations leader. Right now I'm at <a href="https://www.revpartners.io">RevPartners</a>, designing revenue systems for companies from YC-stage startups to $150M+ ARR enterprises. Before that I founded a health-tech startup, was the first RevOps hire at Mindee (YC&nbsp;W21), and cut my teeth closing enterprise deals at Trilogy.</p>
+    <p class="soft">If that's the part you came for, the full story is on <a href="https://www.linkedin.com/in/codynapior/">LinkedIn</a>.</p>
+  </section>
+
+  <section>
+    <h2>Say Hi</h2>
+    <p class="soft">I like interesting people and interesting problems. If you have either, my inbox is open.</p>
+    <div class="links">
+      <span>cnapior{at}gmail{dot}com</span>
+      <a href="https://www.linkedin.com/in/codynapior/">LinkedIn</a>
+    </div>
+  </section>
+
+  <footer>© 2026 Cody Napior</footer>
+</main>
+
+<script type="module">
+import createGlobe from './cobe.js';
+import { markers } from './markers.js';
+
+const canvas = document.getElementById('globe');
+const tip = document.getElementById('globe-tip');
+const darkQuery = window.matchMedia('(prefers-color-scheme: dark)');
+
+const THETA = 0.22;
+// Start over the Atlantic so both home (Ottawa) and Europe are in view
+let phi = 4.4;
+let pointerDown = null;
+let pointerPhi = 0;
+let dragged = false;
+let hovering = false;
+let globe = null;
+let tipTimer = null;
+
+// Marker unit vectors, matching cobe's internal lat/lng -> vec3 conversion
+const DEG = Math.PI / 180;
+const vecs = markers.map((m) => {
+  const lat = m.location[0] * DEG;
+  const s = m.location[1] * DEG - Math.PI;
+  const cl = Math.cos(lat);
+  return [-cl * Math.cos(s), Math.sin(lat), cl * Math.sin(s)];
+});
+
+// Screen position of a marker: rotate into view space (inverse of the
+// shader's L(theta, phi)), then project onto cobe's 0.8-radius disc.
+function markerScreenPos(v, w, phiNow) {
+  const d = Math.cos(phiNow), f = Math.sin(phiNow);
+  const c = Math.cos(THETA), e = Math.sin(THETA);
+  const hx = d * v[0] + f * v[2];
+  const hy = f * e * v[0] + c * v[1] - d * e * v[2];
+  const hz = -f * c * v[0] + e * v[1] + d * c * v[2];
+  if (hz < 0.12) return null; // back side or right on the limb
+  return [w / 2 * (1 + 0.8 * hx), w / 2 * (1 - 0.8 * hy)];
+}
+
+function hitTest(clientX, clientY) {
+  const rect = canvas.getBoundingClientRect();
+  const x = clientX - rect.left;
+  const y = clientY - rect.top;
+  const w = rect.width;
+  const phiNow = phi + pointerPhi;
+  let best = -1;
+  let bestDist = Math.max(12, w * 0.03);
+  let bestPos = null;
+  for (let i = 0; i < vecs.length; i++) {
+    const p = markerScreenPos(vecs[i], w, phiNow);
+    if (!p) continue;
+    const dist = Math.hypot(p[0] - x, p[1] - y);
+    if (dist < bestDist) { bestDist = dist; best = i; bestPos = p; }
+  }
+  return best === -1 ? null : { name: markers[best].name, pos: bestPos };
+}
+
+function showTip(hit) {
+  tip.textContent = hit.name;
+  tip.style.left = canvas.offsetLeft + hit.pos[0] + 'px';
+  tip.style.top = canvas.offsetTop + hit.pos[1] + 'px';
+  tip.style.opacity = '1';
+}
+
+function hideTip() {
+  tip.style.opacity = '0';
+  hovering = false;
+}
+
+function startGlobe() {
+  if (globe) { globe.destroy(); globe = null; }
+  const dark = darkQuery.matches;
+  const size = canvas.offsetWidth;
+  try {
+    globe = createGlobe(canvas, {
+      devicePixelRatio: 2,
+      width: size * 2,
+      height: size * 2,
+      phi: 0,
+      theta: THETA,
+      dark: dark ? 1 : 0,
+      diffuse: 1.2,
+      mapSamples: 18000,
+      mapBrightness: dark ? 2.2 : 7,
+      baseColor: dark ? [0.35, 0.35, 0.33] : [1, 1, 1],
+      markerColor: dark ? [0.37, 0.75, 0.56] : [0.11, 0.48, 0.31],
+      glowColor: dark ? [0.12, 0.12, 0.11] : [0.93, 0.93, 0.91],
+      markers,
+      onRender(state) {
+        if (pointerDown === null && !hovering) phi += 0.0028;
+        state.phi = phi + pointerPhi;
+        state.width = size * 2;
+        state.height = size * 2;
+      },
+    });
+  } catch (e) {
+    // No WebGL — the caption still tells the story
+    canvas.style.display = 'none';
+  }
+}
+
+canvas.addEventListener('pointerdown', (e) => {
+  pointerDown = e.clientX - pointerPhi * 200;
+  dragged = false;
+  canvas.setPointerCapture(e.pointerId);
+});
+
+canvas.addEventListener('pointermove', (e) => {
+  if (pointerDown !== null) {
+    pointerPhi = (e.clientX - pointerDown) / 200;
+    if (Math.abs(pointerPhi) > 0.02) { dragged = true; hideTip(); }
+    return;
+  }
+  if (e.pointerType !== 'mouse') return;
+  const hit = hitTest(e.clientX, e.clientY);
+  if (hit) {
+    hovering = true;
+    showTip(hit);
+    canvas.style.cursor = 'pointer';
+  } else {
+    hideTip();
+    canvas.style.cursor = 'grab';
+  }
+});
+
+canvas.addEventListener('pointerleave', hideTip);
+
+const release = (e) => {
+  if (pointerDown === null) return;
+  phi += pointerPhi;
+  pointerPhi = 0;
+  pointerDown = null;
+  // A tap (no real drag) on touch devices: show the tooltip briefly
+  if (!dragged && e.pointerType !== 'mouse') {
+    const hit = hitTest(e.clientX, e.clientY);
+    if (hit) {
+      hovering = true;
+      showTip(hit);
+      clearTimeout(tipTimer);
+      tipTimer = setTimeout(hideTip, 2500);
+    } else {
+      hideTip();
+    }
+  }
+};
+canvas.addEventListener('pointerup', release);
+canvas.addEventListener('pointercancel', release);
+
+startGlobe();
+darkQuery.addEventListener('change', startGlobe);
+
+let resizeTimer;
+window.addEventListener('resize', () => {
+  clearTimeout(resizeTimer);
+  resizeTimer = setTimeout(startGlobe, 150);
+});
+
+// Live chess.com rapid rating; the static text stands in if this fails
+fetch('https://api.chess.com/pub/player/pleasantendgame/stats')
+  .then((r) => r.json())
+  .then((stats) => {
+    const rapid = stats.chess_rapid;
+    if (!rapid) return;
+    document.getElementById('chess-now').textContent = rapid.last.rating;
+  })
+  .catch(() => {});
+</script>
+</body>
+</html>
